@@ -1,11 +1,12 @@
 [
   {
     "username": "fake_username",
-    "date": "",
-    "time": "",
-    "type": "", 
-    "category": "",
-    "body": "",
+    "date": "05/07/23",
+    "time": "2:23 PM",
+    "type": "Question", 
+    "title": "Florence/Italy travel",
+    "program": "Florence",
+    "body": "I really want to explore italy and go to many places. What kind of places were you able to go to over the course of the quarter? And in general how often do you get to go out of florence or explore the area?",
     "images": [],
     "comments": [],
     "users_joined": []

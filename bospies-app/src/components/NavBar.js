@@ -5,6 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import icon from './../BospiesLogo.png';
+import iconSVG from './../Icon.svg'
 
 let barStyle = {
     color: "black",
@@ -25,7 +26,7 @@ export default function NavBar() {
             <Box sx={{ flexGrow: 1 }}>
                 <AppBar position="static">
                     <Toolbar style={barStyle}>
-                        <img src={icon} width="150"/>
+                        <img src={iconSVG} width="150"/>
                         <Typography variant="h5" style={{marginLeft:"25px"}}>
                             <b>Home</b>
                         </Typography>

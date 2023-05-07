@@ -2,12 +2,15 @@ import { Container } from '@mui/system';
 import { Grid } from '@mui/material';
 import * as React from 'react';
 import FilterButton from '../components/FilterButton';
+import Post from '../components/Post';
 import programs from '../json/programs.json';
 import typeOptions from '../json/type.json';
-import sortOptions from '../json/sort_options.json'
 import NavBar from '../components/NavBar';
+import sortOptions from '../json/sort_options.json';
+import homepagePosts from '../json/homepage_posts.json';
 
 const HomepageLayout = (props) => {
+  const [posts, setPosts] = React.useState(homepagePosts);
   const [program, setProgram] = React.useState('');
   const [type, setType] = React.useState('');
   const [sort, setSort] = React.useState('');
@@ -26,6 +29,7 @@ const HomepageLayout = (props) => {
   return (
     <div>
     <NavBar/>
+    <div style={{height: "32px"}}/>
     <Container maxWidth="lg">
       <Grid container >
         <Grid item xs={12} md={9} >
@@ -40,9 +44,15 @@ const HomepageLayout = (props) => {
               <FilterButton filterName="Sort" filterSelected={sort} handleFilterSelected={handleSortChange} filterOptions={sortOptions} />
             </Grid>
           </Grid>
+          <div style={{height: "32px"}}/>
+          {posts && posts.map((post, index) => {
+            return (
+              <Post post={post}/>
+            )
+          })}
         </Grid>
         <Grid item xs={0} md={3}>
-
+          {/* SIDE BAR */}
         </Grid>
       </Grid>
     </Container>
