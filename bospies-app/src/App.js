@@ -1,12 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
-import HomePage from './components/HomePage';
+import HomepageLayout from './layouts/HomepageLayout'
+import NavBar from './components/NavBar';
 
 function App() {
   return (
     <div className="App">
-      {/* TODO - add pages (mainly login and home) with routers here*/}
-      <HomePage />
+      {/* TODO - add pages and routers here*/}
+      <NavBar/>
+      <HomepageLayout/>
     </div>
   );
 }
