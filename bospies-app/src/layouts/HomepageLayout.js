@@ -24,6 +24,8 @@ const HomepageLayout = (props) => {
     setSort(event.target.value);
   };
   return (
+    <div>
+    <NavBar/>
     <Container maxWidth="lg">
       <Grid container >
         <Grid item xs={12} md={9} >
@@ -44,6 +46,7 @@ const HomepageLayout = (props) => {
         </Grid>
       </Grid>
     </Container>
+    </div>
   )
 }
 
