@@ -2,13 +2,14 @@
   "Question": "#FFCC49",
   "Sharing": "#FF8B49",
   "Itinerary": "#D049FF",
+  "Australia": "#82C3FF",
   "Berlin": "", 
   "Cape Town": "", 
   "Florence": "#75C558", 
-  "Kyoto": "", 
-  "Madrid": "", 
+  "Kyoto": "#58C5BE", 
+  "Madrid": "#C56C58", 
   "New York": "", 
-  "Oxford": "", 
+  "Oxford": "#C5A058", 
   "Paris": "", 
   "Santiago": ""
 }

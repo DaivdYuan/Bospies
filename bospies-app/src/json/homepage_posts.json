@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "username": "fake_username",
     "date": "05/07/23",
     "time": "2:23 PM",
@@ -8,6 +9,71 @@
     "program": "Florence",
     "body": "I really want to explore italy and go to many places. What kind of places were you able to go to over the course of the quarter? And in general how often do you get to go out of florence or explore the area?",
     "images": [],
+    "comments": [],
+    "users_joined": []
+  },
+  {
+    "id": 2,
+    "username": "someone_else",
+    "date": "05/06/23",
+    "time": "9:31 PM",
+    "type": "Sharing", 
+    "title": "Average Day in Kyoto",
+    "program": "Kyoto",
+    "body": "The average day: Breakfast with host parents, take the train to school, had language class everyday, ate lunch in the dining hall with Japanese students, finished classes by early afternoon and explored around Kyoto for the rest of the day - sometimes we also went to bars at night.",
+    "images": ["https://bosp.stanford.edu/sites/g/files/sbiybj21976/files/styles/breakpoint_2xl_2x/public/media/image/89100_crop2_bosp_kyoto_1.jpg?itok=tqVzWlXR", "https://bosp.stanford.edu/sites/g/files/sbiybj21976/files/styles/breakpoint_2xl_2x/public/media/image/culturescustomstraditions_cai_0.jpg?itok=-4YSBNd6"],
+    "comments": [
+      {
+        "username": "commenterstudent",
+        "date": "05/07/23",
+        "time": "12:01 PM",
+        "body": "also +1 on meeting local students. Doshisha has an awesome club called CASK specifically for making connections and supporting the stanford students. They really make a huge difference and I’d encourage you to hang out with them! I feel like I didn’t do this enough"
+      },
+      {
+        "username": "anotherstudent",
+        "date": "05/06/23",
+        "time": "11:54 PM",
+        "body": "went to Kyoto Fall ‘22 and loved kiyomizu!! We went pretty early in the quarter though so the leaves werent as red as in this pic"
+      }
+    ],
+    "users_joined": []
+  },
+  {
+    "id": 3,
+    "username": "mynameisblank",
+    "date": "05/06/23",
+    "time": "1:45 PM",
+    "type": "Question", 
+    "title": "Learning about Madrid and BOSP",
+    "program": "Madrid",
+    "body": "I am a junior who is interested in going to Madrid to study next year! I have not done other BOSP programs, I am a prospective student looking to learn more!\n Would we be allowed to travel outside of Spain to other parts of Europe? Which specific public transportation services would you recommend?\n Is there a list of classes I may choose from to study while at the university in Madrid? Who would you recommend I speak with to make sure I will still be able to graduate by my senior year?",
+    "images": [],
+    "comments": [],
+    "users_joined": []
+  },
+  {
+    "id": 4,
+    "username": "mynameisblank",
+    "date": "05/06/23",
+    "time": "1:27 AM",
+    "type": "Question", 
+    "title": "Oxford average week??",
+    "program": "Oxford",
+    "body": "I’ve heard that the oxford program is very self directed (only 1-3 strict class/tutorial meetings a week) and you have to really carve out your own schedule. I’m interested in the program but i usually need a lot of set structure and routine. Any advice from past BOSP oxford people about how to go about this? I want to make the most out of my time there.",
+    "images": [],
+    "comments": [],
+    "users_joined": []
+  },
+  {
+    "id": 5,
+    "username": "ineedusernames",
+    "date": "05/05/23",
+    "time": "10:32 AM",
+    "type": "Sharing", 
+    "title": "BOSP Australia",
+    "program": "Australia",
+    "body": "I am a senior who just studied abroad in Australia last Fall quarter. My average day was lots of field work and meals together with the rest of my cohort. My favorite experience was staying at different islands. And Sydney is very beautiful. One advice tho: Be prepared to be very active and sweaty mostly all the time",
+    "images": ["https://bosp.stanford.edu/sites/g/files/sbiybj21976/files/styles/breakpoint_2xl_2x/public/media/image/academicpursuit_mekler_0.jpg?itok=ty94yqvN"],
     "comments": [],
     "users_joined": []
   }

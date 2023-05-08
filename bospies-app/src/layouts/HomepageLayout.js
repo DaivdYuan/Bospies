@@ -47,7 +47,7 @@ const HomepageLayout = (props) => {
           <div style={{height: "32px"}}/>
           {posts && posts.map((post, index) => {
             return (
-              <Post post={post}/>
+              <Post post={post} isHomepage={true}/>
             )
           })}
         </Grid>
