@@ -27,7 +27,7 @@ const Post = (props) => {
   return (
     <PostBox justifyContent="flex-end">
       <Grid container direction="row" alignItems="center" justifyContent="space-between" sx={{ marginBottom: "8px" }}>
-        <Grid item direction="row">
+        <Grid item>
           <Grid container columnGap={1} alignItems="center">
             <AccountCircleIcon sx={{ color: "#C16D68" }} fontSize="large" />
             <Typography sx={{ fontSize: "16px" }}>

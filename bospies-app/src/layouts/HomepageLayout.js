@@ -1,5 +1,5 @@
 import { Container } from '@mui/system';
-import { Grid } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import * as React from 'react';
 import FilterButton from '../components/FilterButton';
 import Post from '../components/Post';
@@ -10,22 +10,54 @@ import sortOptions from '../json/sort_options.json';
 import homepagePosts from '../json/homepage_posts.json';
 
 const HomepageLayout = (props) => {
+  const [allPosts, setAllPosts] = React.useState(homepagePosts);
   const [posts, setPosts] = React.useState(homepagePosts);
-  const [program, setProgram] = React.useState('');
-  const [type, setType] = React.useState('');
-  const [sort, setSort] = React.useState('');
+  const [program, setProgram] = React.useState('View All');
+  const [type, setType] = React.useState('View All');
+  const [sort, setSort] = React.useState('View All');
+
   const handleProgramChange = (event) => {
-    // Do the filtering here
-    setProgram(event.target.value);
+    let temp = allPosts;
+    console.log(type)
+    if (type !== "View All") {
+      temp = temp.filter(post => post.type === type);
+    }
+    if (sort !== "View All") {
+      // DO SORTING HERE
+    }
+    if (event.target.value === "View All") {
+      setPosts(temp);
+      setProgram(event.target.value);
+    } else {
+      temp = temp.filter(post => post.program === event.target.value);
+      setPosts(temp);
+      setProgram(event.target.value);
+    }
   };
+
   const handleTypeChange = (event) => {
-    // Do the filtering here
-    setType(event.target.value);
+    let temp = allPosts;
+    if (program !== "View All") {
+      temp = temp.filter(post => post.program === program);
+    }
+    if (sort !== "View All") {
+      // DO SORTING HERE
+    }
+    if (event.target.value === "View All") {
+      setPosts(temp);
+      setType(event.target.value);
+    } else {
+      temp = temp.filter(post => post.type === event.target.value);
+      setPosts(temp);
+      setType(event.target.value);
+    }
   };
+
   const handleSortChange = (event) => {
     // Do the filtering here
     setSort(event.target.value);
   };
+
   return (
     <div>
     <NavBar/>
@@ -45,11 +77,14 @@ const HomepageLayout = (props) => {
             </Grid>
           </Grid>
           <div style={{height: "32px"}}/>
-          {posts && posts.map((post, index) => {
+          {posts && posts.length > 0 ? posts.map((post, index) => {
             return (
-              <Post post={post} isHomepage={true}/>
+              <Post post={post} isHomepage={true} key={post.id}/>
             )
-          })}
+          })
+          :
+          <Typography variant="h4" align="left" sx={{ fontSize: "24px", color: "#33363F", fontWeight: 700, marginBottom: "8px" }}>No posts found.</Typography>
+          }
         </Grid>
         <Grid item xs={0} md={3}>
           {/* SIDE BAR */}
