@@ -6,6 +6,7 @@ import programs from '../json/programs.json';
 import typeOptions from '../json/type.json';
 import sortOptions from '../json/sort_options.json'
 import NavBar from '../components/NavBar';
+import SideBar from '../components/SideBar';
 
 const HomepageLayout = (props) => {
   const [program, setProgram] = React.useState('');
@@ -46,6 +47,7 @@ const HomepageLayout = (props) => {
         </Grid>
       </Grid>
     </Container>
+    <SideBar/>
     </div>
   )
 }
