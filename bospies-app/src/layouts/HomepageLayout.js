@@ -6,12 +6,9 @@ import Post from '../components/Post';
 import programs from '../json/programs.json';
 import typeOptions from '../json/type.json';
 import NavBar from '../components/NavBar';
-<<<<<<< HEAD
 import SideBar from '../components/SideBar';
-=======
 import sortOptions from '../json/sort_options.json';
 import homepagePosts from '../json/homepage_posts.json';
->>>>>>> 697b88e35303e38359358e506216a22f77a7ba1b
 
 const HomepageLayout = (props) => {
   const [allPosts, setAllPosts] = React.useState(homepagePosts);
@@ -65,37 +62,36 @@ const HomepageLayout = (props) => {
   return (
     <div>
     <NavBar/>
-    <div style={{height: "32px"}}/>
-    <Container maxWidth="lg">
-      <Grid container >
-        <Grid item xs={12} md={9} >
-          <Grid container direction="row" rowGap={2} justifyContent="flex-start">
-            <Grid item xs={5} sm={4} md={2.5}>
-              <FilterButton filterName="Program" filterSelected={program} handleFilterSelected={handleProgramChange} filterOptions={programs} />
+      <div style={{height: "32px"}}/>
+      <Container maxWidth="lg">
+        <Grid container >
+          <Grid item xs={12} md={9} >
+            <Grid container direction="row" rowGap={2} justifyContent="flex-start">
+              <Grid item xs={5} sm={4} md={2.5}>
+                <FilterButton filterName="Program" filterSelected={program} handleFilterSelected={handleProgramChange} filterOptions={programs} />
+              </Grid>
+              <Grid item xs={5} sm={4} md={2.5}>
+                <FilterButton filterName="Type" filterSelected={type} handleFilterSelected={handleTypeChange} filterOptions={typeOptions} />
+              </Grid>
+              <Grid item xs={5} sm={4} md={2.5}>
+                <FilterButton filterName="Sort" filterSelected={sort} handleFilterSelected={handleSortChange} filterOptions={sortOptions} />
+              </Grid>
             </Grid>
-            <Grid item xs={5} sm={4} md={2.5}>
-              <FilterButton filterName="Type" filterSelected={type} handleFilterSelected={handleTypeChange} filterOptions={typeOptions} />
-            </Grid>
-            <Grid item xs={5} sm={4} md={2.5}>
-              <FilterButton filterName="Sort" filterSelected={sort} handleFilterSelected={handleSortChange} filterOptions={sortOptions} />
-            </Grid>
+            <div style={{height: "32px"}}/>
+            {posts && posts.length > 0 ? posts.map((post, index) => {
+              return (
+                <Post post={post} isHomepage={true} key={post.id}/>
+              )
+            })
+            :
+            <Typography variant="h4" align="left" sx={{ fontSize: "24px", color: "#33363F", fontWeight: 700, marginBottom: "8px" }}>No posts found.</Typography>
+            }
           </Grid>
-          <div style={{height: "32px"}}/>
-          {posts && posts.length > 0 ? posts.map((post, index) => {
-            return (
-              <Post post={post} isHomepage={true} key={post.id}/>
-            )
-          })
-          :
-          <Typography variant="h4" align="left" sx={{ fontSize: "24px", color: "#33363F", fontWeight: 700, marginBottom: "8px" }}>No posts found.</Typography>
-          }
+          <Grid item xs={0} md={3}>
+            <SideBar/>
+          </Grid>
         </Grid>
-        <Grid item xs={0} md={3}>
-          {/* SIDE BAR */}
-        </Grid>
-      </Grid>
-    </Container>
-    <SideBar/>
+      </Container>
     </div>
   )
 }

@@ -9,7 +9,8 @@ import { Button } from '@mui/base';
 let listStyle = {
     display: "flex",
     width: "300px",
-    flexDirection: "column"
+    flexDirection: "column",
+    marginLeft: "60px"
 }
 
 let sideTitleStyle = {
