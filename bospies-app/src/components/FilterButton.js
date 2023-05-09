@@ -4,7 +4,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { styled } from "@mui/system";
 
 const ExpandMoreStyled = styled(ExpandMoreIcon)({
-  color: "green",
+  // color: "green",
   paddingRight: "8px",
   "&.MuiSelect-iconOpen": {
     paddingRight: 0,
