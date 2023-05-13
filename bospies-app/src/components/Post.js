@@ -5,6 +5,8 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import AddIcon from "@mui/icons-material/Add";
 import { styled } from "@mui/system";
 import colors from "../json/colors.json";
+import PhotoPopup from "./PhotoPopup";
+
 
 const PostBox = styled(Box)({
   padding: "32px",
@@ -31,6 +33,8 @@ const thumbnailImage2 = {
 
 const Post = (props) => {
   const { post, isHomepage = false } = props;
+  const [focusedPhoto, setFocusedPhoto] = React.useState('');
+  const [viewPhotoPopup, setViewPhotoPopup] = React.useState(false);
 
   return (
     <PostBox justifyContent="flex-end">
@@ -188,13 +192,16 @@ const Post = (props) => {
           {post.images.map((image, index) => {
             return (
               <Grid item md={3}>
-                <a href={image}>
-                <img src={image} style={thumbnailImage2}/>
+                <a onClick={() => {setFocusedPhoto(image); setViewPhotoPopup(true);}}>
+                  <img src={image} style={thumbnailImage2}/>
                 </a>
               </Grid>
             )
           })}
         </Grid>
+        }
+        {viewPhotoPopup &&
+          <PhotoPopup photo={focusedPhoto} handleClose={() => setViewPhotoPopup(false)} open={viewPhotoPopup}/>
         }
         </>
       )}
