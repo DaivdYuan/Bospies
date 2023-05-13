@@ -12,6 +12,7 @@ let barStyle = {
   backgroundColor: "white",
   justifyContent: "space-between",
   padding: "10px 35px",
+  borderBottom: "3px solid rgba(0, 0, 0, .09)"
 };
 
 let buttonStyle = {
@@ -25,10 +26,10 @@ export default function NavBar(props) {
   return (
     <div>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
+        <AppBar position="static" elevation={0}>
           <Toolbar style={barStyle}>
             <a href="/"><img src={iconSVG} width="150"/></a>
-            <Typography variant="h5" style={{ marginLeft: "25px" }}>
+            <Typography variant="h5" style={{ marginLeft: "25px", color: "#33363F" }}>
               <b>{title}</b>
             </Typography>
             <Button style={buttonStyle}>Create a post</Button>
