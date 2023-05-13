@@ -2,7 +2,7 @@
   {
     "id": 1,
     "username": "fake_username",
-    "date": "05/07/23",
+    "date": "05/07/2023",
     "time": "2:23 PM",
     "type": "Question", 
     "title": "Florence/Italy travel",
@@ -15,7 +15,7 @@
   {
     "id": 2,
     "username": "someone_else",
-    "date": "05/06/23",
+    "date": "05/06/2023",
     "time": "9:31 PM",
     "type": "Sharing", 
     "title": "Average Day in Kyoto",
@@ -25,13 +25,13 @@
     "comments": [
       {
         "username": "commenterstudent",
-        "date": "05/07/23",
+        "date": "05/07/2023",
         "time": "12:01 PM",
         "body": "also +1 on meeting local students. Doshisha has an awesome club called CASK specifically for making connections and supporting the stanford students. They really make a huge difference and I’d encourage you to hang out with them! I feel like I didn’t do this enough"
       },
       {
         "username": "anotherstudent",
-        "date": "05/06/23",
+        "date": "05/06/2023",
         "time": "11:54 PM",
         "body": "went to Kyoto Fall ‘22 and loved kiyomizu!! We went pretty early in the quarter though so the leaves werent as red as in this pic"
       }
@@ -41,7 +41,7 @@
   {
     "id": 3,
     "username": "mynameisblank",
-    "date": "05/06/23",
+    "date": "05/06/2023",
     "time": "1:45 PM",
     "type": "Question", 
     "title": "Learning about Madrid and BOSP",
@@ -54,7 +54,7 @@
   {
     "id": 4,
     "username": "mynameisblank",
-    "date": "05/06/23",
+    "date": "05/06/2023",
     "time": "1:27 AM",
     "type": "Question", 
     "title": "Oxford average week??",
@@ -67,7 +67,7 @@
   {
     "id": 5,
     "username": "ineedusernames",
-    "date": "05/05/23",
+    "date": "05/05/2023",
     "time": "10:32 AM",
     "type": "Sharing", 
     "title": "BOSP Australia",

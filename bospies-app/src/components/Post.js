@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Box, Typography, Grid, Stack, ButtonBase } from "@mui/material";
+import { Box, Typography, Grid, Stack, ButtonBase, Link } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import AddIcon from "@mui/icons-material/Add";
@@ -19,6 +19,14 @@ const thumbnailImage = {
   width: "100%",
   height: "160px",
   borderRadius: "8px",
+};
+
+const thumbnailImage2 = {
+  width: "100%",
+  height: "100%",
+  borderRadius: "8px",
+  aspectRatio: 1/1,
+  objectFit: "cover",
 };
 
 const Post = (props) => {
@@ -87,7 +95,9 @@ const Post = (props) => {
         }}
         textAlign="left"
       >
-        {post.title}
+        <Link href={"/post/" + post.id} underline="hover" sx={{ color: "#33363F" }}>
+          {post.title}
+        </Link>
       </Typography>
       {isHomepage ? (
         <>
@@ -152,27 +162,43 @@ const Post = (props) => {
               </Grid>
             </Grid>
           )}
+          <Grid container justifyContent="flex-end" sx={{ marginTop: "12px" }}>
+            <ButtonBase href={"/post/" + post.id}>
+              <AddIcon
+                sx={{ color: "#33363F", stroke: "#33363F", marginRight: "4px" }}
+              />
+              <Typography
+                sx={{ fontSize: "18px", fontWeight: "bold", color: "#33363F" }}
+              >
+                Join Convo
+              </Typography>
+            </ButtonBase>
+          </Grid>
         </>
       ) : (
+        <>
         <Typography
           sx={{ fontSize: "18px", color: "#33363F", fontWeight: 400 }}
           textAlign="left"
         >
           {post.body}
         </Typography>
+        {post.images.length > 0 &&
+        <Grid container sx={{marginTop: "16px"}} columnGap={2}>
+          {post.images.map((image, index) => {
+            return (
+              <Grid item md={3}>
+                <a href={image}>
+                <img src={image} style={thumbnailImage2}/>
+                </a>
+              </Grid>
+            )
+          })}
+        </Grid>
+        }
+        </>
       )}
-      <Grid container justifyContent="flex-end" sx={{ marginTop: "12px" }}>
-        <ButtonBase>
-          <AddIcon
-            sx={{ color: "#33363F", stroke: "#33363F", marginRight: "4px" }}
-          />
-          <Typography
-            sx={{ fontSize: "18px", fontWeight: "bold", color: "#33363F" }}
-          >
-            Join Convo
-          </Typography>
-        </ButtonBase>
-      </Grid>
+
     </PostBox>
   );
 };

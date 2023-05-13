@@ -20,15 +20,16 @@ let buttonStyle = {
   color: "black",
 };
 
-export default function NavBar() {
+export default function NavBar(props) {
+  const {title} = props;
   return (
     <div>
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
           <Toolbar style={barStyle}>
-            <img src={iconSVG} width="150" />
+            <a href="/"><img src={iconSVG} width="150"/></a>
             <Typography variant="h5" style={{ marginLeft: "25px" }}>
-              <b>Home</b>
+              <b>{title}</b>
             </Typography>
             <Button style={buttonStyle}>Create a post</Button>
           </Toolbar>
