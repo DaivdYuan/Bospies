@@ -13,9 +13,10 @@ let listStyle = {
 };
 
 let sideTitleStyle = {
-  borderBottom: "solid black",
+  borderBottom: "3px solid #33363F",
   display: "flex",
   justifyContent: "space-between",
+  alignItems: "center",
   paddingLeft: "15px",
 };
 
@@ -44,7 +45,7 @@ export default function SideBar() {
   return (
     <div style={listStyle}>
       <div style={sideTitleStyle}>
-        <Typography sx={{ mt: 2, mb: 2 }} variant="h6">
+        <Typography sx={{ mt: 2, mb: 2, fontWeight: "bold", color: "#33363F" }} variant="h6">
           Groups
         </Typography>
         <Button style={addStyle}>+</Button>
