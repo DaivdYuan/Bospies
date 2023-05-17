@@ -1,6 +1,14 @@
-import * as React from 'react';
-import { Box, InputLabel, Menu, MenuItem, FormControl, Select, Typography } from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import * as React from "react";
+import {
+  Box,
+  InputLabel,
+  Menu,
+  MenuItem,
+  FormControl,
+  Select,
+  Typography,
+} from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from "@mui/system";
 
 const ExpandMoreStyled = styled(ExpandMoreIcon)({
@@ -8,8 +16,8 @@ const ExpandMoreStyled = styled(ExpandMoreIcon)({
   paddingRight: "8px",
   "&.MuiSelect-iconOpen": {
     paddingRight: 0,
-    paddingLeft: "8px"
-  }
+    paddingLeft: "8px",
+  },
 });
 
 const style = {
@@ -34,7 +42,8 @@ const style = {
 };
 
 const FilterButton = (props) => {
-  const { filterName, filterSelected, handleFilterSelected, filterOptions } = props;
+  const { filterName, filterSelected, handleFilterSelected, filterOptions } =
+    props;
   return (
     <FormControl>
       <Select
@@ -46,10 +55,12 @@ const FilterButton = (props) => {
             sx={{
               fontWeight: 600,
               color: "#33363F",
-              opacity: 0.5
+              opacity: 0.5,
             }}
           >
-            {filterSelected && filterSelected !== 'View All' ? filterSelected : filterName}
+            {filterSelected && filterSelected !== "View All"
+              ? filterSelected
+              : filterName}
           </Typography>
         )}
         displayEmpty
@@ -58,12 +69,14 @@ const FilterButton = (props) => {
       >
         {filterOptions.map((filter, index) => {
           return (
-            <MenuItem key={index} value={filter}>{filter}</MenuItem>
-          )
+            <MenuItem key={index} value={filter}>
+              {filter}
+            </MenuItem>
+          );
         })}
       </Select>
     </FormControl>
-  )
-}
+  );
+};
 
-export default FilterButton
+export default FilterButton;
