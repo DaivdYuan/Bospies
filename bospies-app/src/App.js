@@ -8,6 +8,7 @@ import './App.css';
 import CreatePostLayout from './layouts/CreatePostLayout'
 import HomepageLayout from './layouts/HomepageLayout';
 import PostLayout from "./layouts/PostLayout";
+import GroupSelectLayout from "./layouts/GroupSelectLayout";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" Component={HomepageLayout}/>
           <Route exact path="/createPost" element={<CreatePostLayout />} />
           <Route path="/post/:id" Component={PostLayout}/>
+          <Route path="/groups/" Component={GroupSelectLayout}/>
         </Routes>
       </Router>
     </div>

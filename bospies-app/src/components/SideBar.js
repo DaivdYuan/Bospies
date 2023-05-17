@@ -45,9 +45,11 @@ export default function SideBar() {
   return (
     <div style={listStyle}>
       <div style={sideTitleStyle}>
+        <a href="/groups" style={{textDecoration: "none"}}>
         <Typography sx={{ mt: 2, mb: 2, fontWeight: "bold", color: "#33363F" }} variant="h6">
           Groups
         </Typography>
+        </a>
         <Button style={addStyle}>+</Button>
       </div>
       <List>{listItems}</List>
