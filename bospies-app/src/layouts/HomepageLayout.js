@@ -61,7 +61,7 @@ const HomepageLayout = (props) => {
 
   return (
     <div>
-      <NavBar title="Home"/>
+      <NavBar title="Home" post="true"/>
       <div style={{ height: "32px" }} />
       <Container maxWidth="lg">
         <Grid container>

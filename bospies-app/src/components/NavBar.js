@@ -10,7 +10,6 @@ import iconSVG from "./../Icon.svg";
 let barStyle = {
   color: "black",
   backgroundColor: "white",
-  justifyContent: "space-between",
   padding: "10px 35px",
   borderBottom: "3px solid rgba(0, 0, 0, .09)"
 };
@@ -19,10 +18,16 @@ let buttonStyle = {
   backgroundColor: "#F5F5F5",
   padding: "5px 20px",
   color: "black",
+  marginLeft: "auto"
 };
 
 export default function NavBar(props) {
-  const {title} = props;
+  const {title, post} = props;
+
+  let createPostButton
+  if (post === "true") {
+    createPostButton = <Button style={buttonStyle}>Create a post</Button>;
+  }
   return (
     <div>
       <Box sx={{ flexGrow: 1 }}>
@@ -32,7 +37,7 @@ export default function NavBar(props) {
             <Typography variant="h5" style={{ marginLeft: "25px", color: "#33363F" }}>
               <b>{title}</b>
             </Typography>
-            <Button style={buttonStyle}>Create a post</Button>
+            {createPostButton}
           </Toolbar>
         </AppBar>
       </Box>
