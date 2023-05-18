@@ -58,6 +58,18 @@ const listConvos = convos.map((convo, i) => (
   </ListItem>
 ));
 
+const rules = [
+  "Please avoid using derogatory language or making offensive comments about others.",
+  "We ask that you keep all comments and sharing relevant to the purpose of this group.",
+  "Please ensure that all comments and sharing are appropriate and not offensive, discriminatory, or defamatory in any way.",
+]
+
+const ruleItems = rules.map((rule, i) => (
+  <ListItem style={itemStyle}>
+    <ListItemText primary={rule} />
+  </ListItem>
+));
+
 export default function SideBar() {
   return (
     <div style={listStyle}>
@@ -77,6 +89,13 @@ export default function SideBar() {
         </Typography>
       </div>
       <List>{listConvos}</List>
+
+      <div style={sideTitleStyle}>
+        <Typography sx={{ mt: 2, mb: 2, fontWeight: "bold", color: "#33363F" }} variant="h6">
+          Rules
+        </Typography>
+      </div>
+      <List>{ruleItems}</List>
     </div>
   );
 }
