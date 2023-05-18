@@ -32,7 +32,7 @@ const thumbnailImage2 = {
 };
 
 const Post = (props) => {
-  const { post, isHomepage = false } = props;
+  const { post, isHomepage = false, isGroup = false } = props;
   const [focusedPhoto, setFocusedPhoto] = React.useState('');
   const [viewPhotoPopup, setViewPhotoPopup] = React.useState(false);
 
@@ -53,6 +53,7 @@ const Post = (props) => {
         </Grid>
         <Grid item>
           <Stack direction="row" columnGap={1}>
+          {post.type.length > 0 &&
             <Box
               sx={{
                 backgroundColor: colors[post.type],
@@ -69,7 +70,8 @@ const Post = (props) => {
               >
                 {post.type}
               </Typography>
-            </Box>
+            </Box>}
+            {post.program.length > 0 &&
             <Box
               sx={{
                 backgroundColor: colors[post.program],
@@ -86,7 +88,7 @@ const Post = (props) => {
               >
                 {post.program}
               </Typography>
-            </Box>
+            </Box>}
           </Stack>
         </Grid>
       </Grid>
@@ -99,7 +101,7 @@ const Post = (props) => {
         }}
         textAlign="left"
       >
-        <Link href={"/post/" + post.id} underline="hover" sx={{ color: "#33363F" }}>
+        <Link href={isGroup ? "/groups/" + isGroup + "/post/" + post.id : "/post/" + post.id} underline="hover" sx={{ color: "#33363F" }}>
           {post.title}
         </Link>
       </Typography>

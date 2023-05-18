@@ -9,6 +9,7 @@ import CreatePostLayout from './layouts/CreatePostLayout'
 import HomepageLayout from './layouts/HomepageLayout';
 import PostLayout from "./layouts/PostLayout";
 import GroupSelectLayout from "./layouts/GroupSelectLayout";
+import GroupHomeLayout from "./layouts/GroupHomeLayout";
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
           <Route exact path="/editGroup" element={<CreatePostLayout type="makeGroup" />} />
           <Route path="/post/:id" Component={PostLayout}/>
           <Route path="/groups/" Component={GroupSelectLayout}/>
+          <Route path="/groups/:id" Component={GroupHomeLayout}/>
+          <Route exact path="/groups/:grpid/post/:id" element={<PostLayout isGrp={true}/>}/>
         </Routes>
       </Router>
     </div>
