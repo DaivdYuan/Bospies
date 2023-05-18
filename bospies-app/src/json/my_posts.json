@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "username": "TheUser",
+    "date": "05/07/2023",
+    "time": "2:23 PM",
+    "type": "Question", 
+    "title": "Florence/Italy travel",
+    "program": "Florence",
+    "body": "I really want to explore italy and go to many places. What kind of places were you able to go to over the course of the quarter? And in general how often do you get to go out of florence or explore the area?",
+    "images": [],
+    "comments": [],
+    "users_joined": []
+  },
+  {
+    "id": 2,
+    "username": "TheUser",
+    "date": "05/06/2023",
+    "time": "9:31 PM",
+    "type": "Sharing", 
+    "title": "Average Day in Kyoto",
+    "program": "Kyoto",
+    "body": "The average day: Breakfast with host parents, take the train to school, had language class everyday, ate lunch in the dining hall with Japanese students, finished classes by early afternoon and explored around Kyoto for the rest of the day - sometimes we also went to bars at night.",
+    "images": ["https://bosp.stanford.edu/sites/g/files/sbiybj21976/files/styles/breakpoint_2xl_2x/public/media/image/89100_crop2_bosp_kyoto_1.jpg?itok=tqVzWlXR", "https://bosp.stanford.edu/sites/g/files/sbiybj21976/files/styles/breakpoint_2xl_2x/public/media/image/culturescustomstraditions_cai_0.jpg?itok=-4YSBNd6"],
+    "comments": [
+      {
+        "username": "commenterstudent",
+        "date": "05/07/2023",
+        "time": "12:01 PM",
+        "body": "also +1 on meeting local students. Doshisha has an awesome club called CASK specifically for making connections and supporting the stanford students. They really make a huge difference and I’d encourage you to hang out with them! I feel like I didn’t do this enough"
+      },
+      {
+        "username": "anotherstudent",
+        "date": "05/06/2023",
+        "time": "11:54 PM",
+        "body": "went to Kyoto Fall ‘22 and loved kiyomizu!! We went pretty early in the quarter though so the leaves werent as red as in this pic"
+      }
+    ],
+    "users_joined": []
+  }
+]

@@ -10,6 +10,8 @@ import HomepageLayout from './layouts/HomepageLayout';
 import PostLayout from "./layouts/PostLayout";
 import GroupSelectLayout from "./layouts/GroupSelectLayout";
 import GroupHomeLayout from "./layouts/GroupHomeLayout";
+import MyPostsLayout from "./layouts/MyPostsLayout";
+import AccountSettingsLayout from "./layouts/AccountSettingsLayout";
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
           <Route path="/groups/" Component={GroupSelectLayout}/>
           <Route path="/groups/:id" Component={GroupHomeLayout}/>
           <Route exact path="/groups/:grpid/post/:id" element={<PostLayout isGrp={true}/>}/>
+          <Route path="/myposts/" Component={MyPostsLayout}/>
+          <Route path="/settings/" Component={AccountSettingsLayout}/>
         </Routes>
       </Router>
     </div>
