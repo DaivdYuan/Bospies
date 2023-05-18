@@ -17,7 +17,9 @@ function App() {
       <Router>
         <Routes>        
           <Route path="/" Component={HomepageLayout}/>
-          <Route exact path="/createPost" element={<CreatePostLayout />} />
+          <Route exact path="/createPost" element={<CreatePostLayout type="none" />} />
+          <Route exact path="/createGroupPost" element={<CreatePostLayout type="groupPost" />} />
+          <Route exact path="/editGroup" element={<CreatePostLayout type="makeGroup" />} />
           <Route path="/post/:id" Component={PostLayout}/>
           <Route path="/groups/" Component={GroupSelectLayout}/>
         </Routes>
