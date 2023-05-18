@@ -32,7 +32,7 @@ const GroupCard = (props) => {
           }}
           textAlign="left"
         >
-          <Link href={"/group/" + group.id} underline="hover" sx={{ color: "#33363F" }}>
+          <Link href={"/groups/" + group.id} underline="hover" sx={{ color: "#33363F" }}>
             {group.name}
           </Link>
         </Typography>
