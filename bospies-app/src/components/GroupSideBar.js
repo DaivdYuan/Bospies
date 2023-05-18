@@ -31,25 +31,25 @@ let itemStyle = {
 };
 
 const groupNames = [
-  "BOSP Kyoto Fall ‘22",
-  "BOSP Ambassadors",
-  "Doshisha Fall ‘22",
+  "",
 ];
-const listItems = groupNames.map((groupName, i) => (
-  <ListItem style={itemStyle}>
-    <a href={"/groups/" + (i+1).toString()} style={{textDecoration: "none", color: "black"}}>
-    <ListItemText primary={groupName} />
-    </a>
-  </ListItem>
-));
 
-export default function SideBar() {
+
+export default function GroupSideBar(props) {
+  const {group} = props;
+
+  const listItems = group.usernames.map((user, i) => (
+    <ListItem style={itemStyle}>
+      <ListItemText primary={user} />
+    </ListItem>
+  ));
+
   return (
     <div style={listStyle}>
       <div style={sideTitleStyle}>
         <a href="/groups" style={{textDecoration: "none"}}>
         <Typography sx={{ mt: 2, mb: 2, fontWeight: "bold", color: "#33363F" }} variant="h6">
-          Groups
+          Members
         </Typography>
         </a>
         <Button style={addStyle}>+</Button>

@@ -6,6 +6,8 @@ import NavBar from "../components/NavBar";
 import Post from "../components/Post";
 import Comment from "../components/Comment";
 import homepagePosts from "../json/homepage_posts.json";
+import groupPosts from "../json/group_posts.json";
+
 
 const PostBox = styled(Box)({
   padding: "32px",
@@ -15,9 +17,10 @@ const PostBox = styled(Box)({
 });
 
 const PostLayout = (props) => {
-  // const {post} = props;
+  const {isGrp = false, groupName} = props;
   const postId = useParams().id;
-  const [post, setPost] = React.useState(homepagePosts.find(x => String(x.id) === postId));
+  const [post, setPost] = React.useState(isGrp ? groupPosts.find(x => String(x.id) === postId) : homepagePosts.find(x => String(x.id) === postId));
+  console.log(post)
   const [comments, setComments] = React.useState(post?.comments);
   const [newComment, setNewComment] = React.useState('');
 
@@ -36,7 +39,7 @@ const PostLayout = (props) => {
   };
 
   React.useEffect(() => {
-    let cur = homepagePosts.find(x => String(x.id) === postId)
+    let cur = isGrp ? groupPosts.find(x => String(x.id) === postId) : homepagePosts.find(x => String(x.id) === postId);
     setPost(cur);
     setComments(cur.comments);
   });
