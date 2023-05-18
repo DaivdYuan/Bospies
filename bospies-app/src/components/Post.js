@@ -6,6 +6,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { styled } from "@mui/system";
 import colors from "../json/colors.json";
 import PhotoPopup from "./PhotoPopup";
+import ReportBox from "./ReportBox";
 
 
 const PostBox = styled(Box)({
@@ -27,7 +28,7 @@ const thumbnailImage2 = {
   width: "100%",
   height: "100%",
   borderRadius: "8px",
-  aspectRatio: 1/1,
+  aspectRatio: 1 / 1,
   objectFit: "cover",
 };
 
@@ -35,6 +36,7 @@ const Post = (props) => {
   const { post, isHomepage = false, isGroup = false } = props;
   const [focusedPhoto, setFocusedPhoto] = React.useState('');
   const [viewPhotoPopup, setViewPhotoPopup] = React.useState(false);
+  const [showReport, setShowReport] = React.useState(false);
 
   return (
     <PostBox justifyContent="flex-end">
@@ -53,42 +55,42 @@ const Post = (props) => {
         </Grid>
         <Grid item>
           <Stack direction="row" columnGap={1}>
-          {post.type.length > 0 &&
-            <Box
-              sx={{
-                backgroundColor: colors[post.type],
-                padding: "4px 12px",
-                borderRadius: 40,
-              }}
-            >
-              <Typography
+            {post.type.length > 0 &&
+              <Box
                 sx={{
-                  fontWeight: 700,
-                  textTransform: "uppercase",
-                  fontSize: "12px",
+                  backgroundColor: colors[post.type],
+                  padding: "4px 12px",
+                  borderRadius: 40,
                 }}
               >
-                {post.type}
-              </Typography>
-            </Box>}
+                <Typography
+                  sx={{
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    fontSize: "12px",
+                  }}
+                >
+                  {post.type}
+                </Typography>
+              </Box>}
             {post.program.length > 0 &&
-            <Box
-              sx={{
-                backgroundColor: colors[post.program],
-                padding: "4px 12px",
-                borderRadius: 40,
-              }}
-            >
-              <Typography
+              <Box
                 sx={{
-                  fontWeight: 700,
-                  textTransform: "uppercase",
-                  fontSize: "12px",
+                  backgroundColor: colors[post.program],
+                  padding: "4px 12px",
+                  borderRadius: 40,
                 }}
               >
-                {post.program}
-              </Typography>
-            </Box>}
+                <Typography
+                  sx={{
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    fontSize: "12px",
+                  }}
+                >
+                  {post.program}
+                </Typography>
+              </Box>}
           </Stack>
         </Grid>
       </Grid>
@@ -168,46 +170,68 @@ const Post = (props) => {
               </Grid>
             </Grid>
           )}
-          <Grid container justifyContent="flex-end" sx={{ marginTop: "12px" }}>
-            <ButtonBase href={"/post/" + post.id}>
-              <AddIcon
-                sx={{ color: "#33363F", stroke: "#33363F", marginRight: "4px" }}
-              />
-              <Typography
-                sx={{ fontSize: "18px", fontWeight: "bold", color: "#33363F" }}
-              >
-                Join Convo
-              </Typography>
-            </ButtonBase>
+          <Grid container justifyContent="space-between" sx={{ marginTop: "12px" }}>
+            <Grid item>
+              <ButtonBase onClick={() => setShowReport(!showReport)}>
+                <Typography
+                  sx={{ fontSize: "12px", color: "#ABABAB", fontWeight: "bold", marginTop: "4px", textTransform: "uppercase" }}
+                  textAlign="left"
+                >
+                  REPORT
+                </Typography>
+              </ButtonBase>
+            </Grid>
+            <Grid item>
+              <ButtonBase href={"/post/" + post.id}>
+                <AddIcon
+                  sx={{ color: "#33363F", stroke: "#33363F", marginRight: "4px" }}
+                />
+                <Typography
+                  sx={{ fontSize: "18px", fontWeight: "bold", color: "#33363F" }}
+                >
+                  Join Convo
+                </Typography>
+              </ButtonBase>
+            </Grid>
           </Grid>
         </>
       ) : (
         <>
-        <Typography
-          sx={{ fontSize: "18px", color: "#33363F", fontWeight: 400 }}
-          textAlign="left"
-        >
-          {post.body}
-        </Typography>
-        {post.images.length > 0 &&
-        <Grid container sx={{marginTop: "16px"}} columnGap={2}>
-          {post.images.map((image, index) => {
-            return (
-              <Grid item md={3}>
-                <a onClick={() => {setFocusedPhoto(image); setViewPhotoPopup(true);}}>
-                  <img src={image} style={thumbnailImage2}/>
-                </a>
-              </Grid>
-            )
-          })}
-        </Grid>
-        }
-        {viewPhotoPopup &&
-          <PhotoPopup photo={focusedPhoto} handleClose={() => setViewPhotoPopup(false)} open={viewPhotoPopup}/>
-        }
+          <Typography
+            sx={{ fontSize: "18px", color: "#33363F", fontWeight: 400 }}
+            textAlign="left"
+          >
+            {post.body}
+          </Typography>
+          {post.images.length > 0 &&
+            <Grid container sx={{ marginTop: "16px" }} columnGap={2}>
+              {post.images.map((image, index) => {
+                return (
+                  <Grid item md={3}>
+                    <a onClick={() => { setFocusedPhoto(image); setViewPhotoPopup(true); }}>
+                      <img src={image} style={thumbnailImage2} />
+                    </a>
+                  </Grid>
+                )
+              })}
+            </Grid>
+          }
+          <Grid container sx={{mt: 2}}>
+            <ButtonBase onClick={() => setShowReport(!showReport)}>
+              <Typography
+                sx={{ fontSize: "12px", color: "#ABABAB", fontWeight: "bold", marginTop: "4px", textTransform: "uppercase" }}
+                textAlign="left"
+              >
+                REPORT
+              </Typography>
+            </ButtonBase>
+          </Grid>
+          {viewPhotoPopup &&
+            <PhotoPopup photo={focusedPhoto} handleClose={() => setViewPhotoPopup(false)} open={viewPhotoPopup} />
+          }
         </>
       )}
-
+      <ReportBox showReport={showReport} setShowReport={setShowReport} title="Report Post" />
     </PostBox>
   );
 };

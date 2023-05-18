@@ -6,6 +6,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { styled } from "@mui/system";
 import colors from "../json/colors.json";
 import CloseIcon from '@mui/icons-material/Close';
+import ReportBox from "./ReportBox";
 
 const PostBox = styled(Box)({
   padding: "32px",
@@ -56,29 +57,7 @@ const Comment = (props) => {
           </ButtonBase>
         </Grid>
       </Grid>
-      <Modal open={showReport} onClose={() => setShowReport(!showReport)}>
-        <PostBox maxWidth="md">
-          <Grid container justifyContent="space-between" alignItems="center">
-            <Typography
-              sx={{
-                fontSize: "24px",
-                color: "#33363F",
-                fontWeight: 700,
-                marginBottom: "8px",
-              }}
-              textAlign="left"
-            >
-              Report Comment
-            </Typography>
-            <IconButton onClick={() => setShowReport(!showReport)}>
-              <CloseIcon/>
-            </IconButton>
-          </Grid>
-          <Typography textAlign="left" sx={{ color: "#545563" }}>Please explain below why you would like to report the following comment...</Typography>
-          <TextField fullWidth multiline sx={{ backgroundColor: "white", marginBottom: "16px" }} />
-          <Button onClick={() => setShowReport(!showReport)}>Submit Report</Button>
-        </PostBox>
-      </Modal>
+      <ReportBox showReport={showReport} setShowReport={setShowReport} title="Report Comment"/>
     </Grid>
   )
 }
