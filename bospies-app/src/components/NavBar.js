@@ -15,18 +15,21 @@ let barStyle = {
 };
 
 let buttonStyle = {
-  backgroundColor: "#F5F5F5",
   padding: "5px 20px",
   color: "black",
   marginLeft: "auto"
 };
 
 export default function NavBar(props) {
-  const {title, post} = props;
+  const {title, post, type} = props;
 
   let createPostButton
   if (post === "true") {
-    createPostButton = <Button style={buttonStyle}>Create a post</Button>;
+    if (type === "home") {
+      createPostButton = <a href="/createPost" style={buttonStyle}><Button>Create a post</Button></a>;
+    } else if (type === "group") {
+      createPostButton = <a href="/createGroupPost" style={buttonStyle}><Button>Create a post</Button></a>;
+    }
   }
   return (
     <div>

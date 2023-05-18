@@ -40,7 +40,7 @@ const GroupHomeLayout = () => {
 
   return (
     <>
-    <NavBar title={group.name} post="true"/>
+    <NavBar title={group.name} post="true" type="group"/>
     <div style={{ height: "32px" }} />
     <Container maxWidth="lg">
         <Grid container>

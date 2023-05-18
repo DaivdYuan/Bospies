@@ -10,6 +10,7 @@ import HomepageLayout from './layouts/HomepageLayout';
 import PostLayout from "./layouts/PostLayout";
 import GroupSelectLayout from "./layouts/GroupSelectLayout";
 import GroupHomeLayout from "./layouts/GroupHomeLayout";
+import EditGroupLayout from "./layouts/EditGroupLayout";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
           <Route path="/" Component={HomepageLayout}/>
           <Route exact path="/createPost" element={<CreatePostLayout type="none" />} />
           <Route exact path="/createGroupPost" element={<CreatePostLayout type="groupPost" />} />
-          <Route exact path="/editGroup" element={<CreatePostLayout type="makeGroup" />} />
+          <Route exact path="/editGroup" element={<EditGroupLayout />} />
           <Route path="/post/:id" Component={PostLayout}/>
           <Route path="/groups/" Component={GroupSelectLayout}/>
           <Route path="/groups/:id" Component={GroupHomeLayout}/>

@@ -80,7 +80,7 @@ const CreateGroupCard = (props) => {
         }}
         textAlign="left"
       >
-        <Link href={"/group/"} underline="hover" sx={{ color: "#33363F" }}>
+        <Link href={"/editGroup/"} underline="hover" sx={{ color: "#33363F" }}>
           New group
         </Link>
       </Typography>

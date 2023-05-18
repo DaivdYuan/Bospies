@@ -18,12 +18,14 @@ let sideTitleStyle = {
   justifyContent: "space-between",
   alignItems: "center",
   paddingLeft: "15px",
+  marginTop: "30px"
 };
 
 let addStyle = {
   border: "none",
   backgroundColor: "white",
   fontSize: "25px",
+  cursor: "pointer"
 };
 
 let itemStyle = {
@@ -35,11 +37,24 @@ const groupNames = [
   "BOSP Ambassadors",
   "Doshisha Fall ‘22",
 ];
+
+const convos = [
+  "What is Kyoto Like?",
+  "Fall vs. Spring in Kyto",
+  "Oxford adventures",
+]
+
 const listItems = groupNames.map((groupName, i) => (
   <ListItem style={itemStyle}>
     <a href={"/groups/" + (i+1).toString()} style={{textDecoration: "none", color: "black"}}>
     <ListItemText primary={groupName} />
     </a>
+  </ListItem>
+));
+
+const listConvos = convos.map((convo, i) => (
+  <ListItem style={itemStyle}>
+    <ListItemText primary={convo} />
   </ListItem>
 ));
 
@@ -52,24 +67,16 @@ export default function SideBar() {
           Groups
         </Typography>
         </a>
-        <Button style={addStyle}>+</Button>
+        <a href="/editGroup"><Button style={addStyle}>+</Button></a>
       </div>
       <List>{listItems}</List>
-
-      {/* <div style={sideTitleStyle}>
-                <Typography sx={{ mt: 4, mb: 2 }} variant="h6">
-                    Top Conversations
-                </Typography>
-            </div>
-            <List>
-                {generate(
-                    <ListItem>
-                    <ListItemText
-                        primary="Placeholder"
-                    />
-                    </ListItem>,
-                )}
-            </List> */}
+      
+      <div style={sideTitleStyle}>
+        <Typography sx={{ mt: 2, mb: 2, fontWeight: "bold", color: "#33363F" }} variant="h6">
+          Top Conversations
+        </Typography>
+      </div>
+      <List>{listConvos}</List>
     </div>
   );
 }
