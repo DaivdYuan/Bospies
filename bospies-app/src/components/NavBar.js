@@ -6,7 +6,6 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import icon from "./../BospiesLogo.png";
 import iconSVG from "./../Icon.svg";
-import { useNavigate } from 'react-router-dom';
 
 let barStyle = {
   color: "black",
@@ -23,17 +22,11 @@ let buttonStyle = {
 };
 
 export default function NavBar(props) {
-  const navigate = useNavigate();
   const {title, post} = props;
 
   let createPostButton
   if (post === "true") {
-    createPostButton = <
-      Button style={buttonStyle}
-      onClick={() => navigate("/createPost")}
-    >
-      Create a post
-    </Button>;
+    createPostButton = <Button style={buttonStyle}>Create a post</Button>;
   }
   return (
     <div>
