@@ -9,13 +9,24 @@ import NavBar from "../components/NavBar";
 import SideBar from "../components/SideBar";
 import sortOptions from "../json/sort_options.json";
 import homepagePosts from "../json/homepage_posts.json";
+import * as api from "../api";
 
 const HomepageLayout = (props) => {
-  const [allPosts, setAllPosts] = React.useState(homepagePosts);
-  const [posts, setPosts] = React.useState(homepagePosts);
+  const [allPosts, setAllPosts] = React.useState([]);
+  const [posts, setPosts] = React.useState([]);
   const [program, setProgram] = React.useState("View All");
   const [type, setType] = React.useState("View All");
   const [sort, setSort] = React.useState("View All");
+
+  React.useEffect(() => {
+    // fetch all posts from database
+    fetch(api.GET_ALL_POSTS_API)
+      .then((response) => response.json())
+      .then((data) => {
+        setAllPosts([...data.posts].reverse());
+        setPosts([...data.posts].reverse());
+      });
+  }, []);
 
   const handleProgramChange = (event) => {
     let temp = allPosts;

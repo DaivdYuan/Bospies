@@ -2,6 +2,8 @@ import { Box, Button, FormControl, InputLabel, TextField, Select, MenuItem, Chip
 import { useTheme } from '@mui/material/styles';
 import prompts from './../../json/prompts.json';
 import * as React from 'react';
+import { Navigate } from 'react-router-dom';
+import * as api from './../../api';
 
 let formStyle = {
     display: "flex",
@@ -74,6 +76,10 @@ export default function ShareForm() {
     const theme = useTheme();
     const [promptName, setPrompt] = React.useState([]);
 
+    const postTitleRef = React.useRef();
+    const postBodyRef = React.useRef();
+    const postProgramRef = React.useRef();
+
     const handleChange = (event) => {
         const {
         target: { value },
@@ -83,6 +89,45 @@ export default function ShareForm() {
         typeof value === 'string' ? value.split(',') : value,
         );
     };
+
+    async function handlePost(){
+        let postTitle = postTitleRef.current.value;
+        let postBody = postBodyRef.current.value;
+        let postProgram = postProgramRef.current.value;
+        let postUser = "TestUser"
+
+        let post = {
+            title: postTitle,
+            body: postBody,
+            program: postProgram,
+            username: postUser,
+            type: "Sharing"
+        }
+
+        console.log(post);
+
+        if (postTitle === "" || postBody === "" || postProgram === "") {
+            alert("Please fill out all fields!");
+            return false;
+        }
+
+        let response = await fetch(api.SUBMIT_POST_API, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+            },
+            body: JSON.stringify(post),
+        });
+
+        if (response.status !== 200) {
+            alert("Error submitting post!");
+            return false;
+        }
+
+        alert("Post submitted!");
+        return true;
+    }
 
     return (
         <div>
@@ -95,19 +140,29 @@ export default function ShareForm() {
                 noValidate
                 autoComplete="off"
             >
-                <TextField id="standard-basic" label="Post Title" variant="standard" 
-                    style={{width: "95%", margin: "auto", marginTop: "30px"}} />
+                <TextField 
+                    id="standard-basic" label="Post Title" variant="standard" 
+                    style={{width: "95%", margin: "auto", marginTop: "30px"}} 
+                    inputRef={postTitleRef}
+                />
 
                 <div style={{width: "95%", margin: "auto", marginTop: "20px"}} >
                     <Typography sx={{ fontSize: "15px", color: "#33363F", fontWeight: 400 }} align="left">
                         Fun fact about yourself related to study abroad!
                     </Typography>
-                    <TextField id="outlined-basic" label="I am a CASK member" variant="outlined" style={{width: "100%"}}/>
+                    <TextField 
+                        id="outlined-basic" 
+                        label="I am a CASK member" variant="outlined" style={{width: "100%"}}
+                    />
                 </div>
                 <div style={sameLine}>
                     <div style={{width: "47%"}}>
                         <Typography sx={{ fontSize: "15px", color: "#33363F", fontWeight: 400}} align="left">Program Name</Typography>
-                        <TextField id="outlined-basic" label="Oxford" variant="outlined" style={{width: "100%"}}/>
+                        <TextField 
+                            id="outlined-basic" label="Oxford" 
+                            variant="outlined" style={{width: "100%"}}
+                            inputRef={postProgramRef}
+                        />
                     </div>
                     <div style={{width: "47%"}}>
                         <Typography sx={{ fontSize: "15px", color: "#33363F", fontWeight: 400 }} align="left">Quarter</Typography>
@@ -151,10 +206,24 @@ export default function ShareForm() {
                     multiline
                     maxRows={4}
                     style={{width: "95%", margin: "auto", marginTop: "30px"}}
+                    inputRef={postBodyRef}    
                 />
                 <div style={buttonsDiv}>
-                    <Button style={discardButtonStyle}>Discard</Button>
-                    <Button style={postButtonStyle}>Post</Button>
+                    <Button 
+                        style={discardButtonStyle}
+                        onClick={() => {
+                            window.location.href = "/";
+                        }}
+                    >Discard</Button>
+                    <Button 
+                        style={postButtonStyle}
+                        onClick={async () => {
+                            if (await handlePost()) {
+                                window.location.href = "/";
+                            }
+                        }}
+                    
+                    >Post</Button>
                 </div>
             </Box>
         </div>
