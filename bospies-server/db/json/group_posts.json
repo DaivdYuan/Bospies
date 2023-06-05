@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "username": "Alex",
+    "date": "05/07/2023",
+    "time": "2:23 PM",
+    "type": "Itinerary", 
+    "title": "After School Trip to Kiyomizu",
+    "program": "",
+    "body": "I really want to explore Kiyomizu today. Who wants to join me? \n Potential Itinerary: \n 1. Take Train \n 2. Walk around kiyomizu \n 3. Eat Okonomiyake for dinner",
+    "images": [],
+    "comments": [],
+    "users_joined": []
+  },
+  {
+    "id": 2,
+    "username": "Kim",
+    "date": "05/06/2023",
+    "time": "9:31 PM",
+    "type": "Itinerary", 
+    "title": "Weekend Trip to Osaka",
+    "program": "",
+    "body": "I really want to explore Osaka this weekend. Looking for 3 more people in join! \n Potential Itinerary: \n 1. Take Train to Osaka around noon \n 2. Check-in to Airbnb \n 3. Eat skewers at Dotonbori \n 4. Go to the coast",
+    "images": [],
+    "comments": [
+      {
+        "username": "commenterstudent",
+        "date": "05/07/2023",
+        "time": "12:01 PM",
+        "body": "Are we coming back on Sunday?"
+      },
+      {
+        "username": "anotherstudent",
+        "date": "05/06/2023",
+        "time": "11:54 PM",
+        "body": "I'm down!!!"
+      }
+    ],
+    "users_joined": []
+  }
+]

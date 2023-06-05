@@ -1,6 +1,8 @@
 import { Box, Button, FormControl, InputLabel, TextField, Select, MenuItem, Chip, OutlinedInput, Typography } from '@mui/material';
 import * as React from 'react';
 
+import { SUBMIT_NEW_GROUP_API } from '../../api';
+
 let formStyle = {
     display: "flex",
     flexDirection: "column",
@@ -43,6 +45,31 @@ let postButtonStyle = {
 }
 
 export default function JoinGroup() {
+    const groupRef = React.useRef();
+
+    const handleJoinGroup = async () => {
+        let groupName = groupRef.current.value;
+
+        if (groupName === "") {
+            alert("Please enter a group name.");
+            return false;
+        }
+
+        let group = {
+            name: groupName
+        }
+
+        let response = await fetch(SUBMIT_NEW_GROUP_API, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(group)
+        });
+
+        alert("Request submitted!");
+        return true;
+    }
 
     return (
         <div>
@@ -56,11 +83,23 @@ export default function JoinGroup() {
                 autoComplete="off"
             >
                 <TextField id="standard-basic" label="Group Name" variant="standard" 
-                    style={{width: "95%", margin: "auto", marginTop: "30px"}} />
+                    style={{width: "95%", margin: "auto", marginTop: "30px"}} 
+                    inputRef={groupRef}    
+                />
                 
                 <div style={buttonsDiv}>
-                    <Button style={discardButtonStyle}>Discard</Button>
-                    <Button style={postButtonStyle}>Join Group</Button>
+                    <Button 
+                        style={discardButtonStyle}
+                        onClick={() => {window.location.href = "/"}}
+                    >Discard</Button>
+                    <Button 
+                        style={postButtonStyle}
+                        onClick={async () => {
+                            if (await handleJoinGroup()) {
+                                window.location.href = "/";
+                            }                        
+                        }}
+                    >Join Group</Button>
                 </div>
             </Box>
         </div>

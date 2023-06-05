@@ -5,6 +5,8 @@ import ListItemText from "@mui/material/ListItemText";
 import Typography from "@mui/material/Typography";
 import { Button } from "@mui/base";
 
+import { GET_ALL_GROUPS_API } from "../api";
+
 let listStyle = {
   display: "flex",
   width: "300px",
@@ -71,6 +73,17 @@ const ruleItems = rules.map((rule, i) => (
 ));
 
 export default function SideBar() {
+
+  const [groups, setGroups] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch(GET_ALL_GROUPS_API)
+      .then((response) => response.json())
+      .then((data) => {
+        setGroups(data.groups);
+      });
+  }, []);
+
   return (
     <div style={listStyle}>
       <div style={sideTitleStyle}>
@@ -81,7 +94,17 @@ export default function SideBar() {
         </a>
         <a href="/editGroup"><Button style={addStyle}>+</Button></a>
       </div>
-      <List>{listItems}</List>
+      <List>
+        {
+          groups.map((groupName, i) => (
+            <ListItem style={itemStyle}>
+              <a href={"/groups/" + (i+1).toString()} style={{textDecoration: "none", color: "black"}}>
+              <ListItemText primary={groupName} />
+              </a>
+            </ListItem>
+          ))
+        }
+      </List>
       
       <div style={sideTitleStyle}>
         <Typography sx={{ mt: 2, mb: 2, fontWeight: "bold", color: "#33363F" }} variant="h6">

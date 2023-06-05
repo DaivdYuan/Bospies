@@ -1,7 +1,9 @@
 ### TODO:
 - [x] Create Post
 - [x] Get Post List
-- [ ] Get Post
-- [ ] Get Group
-- [ ] Add Comment
+- [x] Get Post
+- [x] Add Comment
+- [ ] Get Group List
+- [ ] Get Group Posts
+- [ ] Create Group
 - [ ] Login

@@ -46,6 +46,7 @@ const Post = (props) => {
         alignItems="center"
         justifyContent="space-between"
         sx={{ marginBottom: "8px" }}
+        minWidth="md"
       >
         <Grid item>
           <Grid container columnGap={1} alignItems="center">

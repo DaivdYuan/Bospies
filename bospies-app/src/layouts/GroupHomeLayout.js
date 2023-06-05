@@ -9,15 +9,27 @@ import sortOptions from "../json/sort_options.json";
 import groupPosts from "../json/group_posts.json";
 import { useParams } from "react-router-dom";
 import GroupSideBar from "../components/GroupSideBar";
+import * as api from "../api";
 
 const GroupHomeLayout = () => {
-  const [allPosts, setAllPosts] = React.useState(groupPosts);
-  const [posts, setPosts] = React.useState(groupPosts);
+  const [allPosts, setAllPosts] = React.useState([]);
+  const [posts, setPosts] = React.useState([]);
   const [type, setType] = React.useState("View All");
   const [sort, setSort] = React.useState("View All");
   const grpId = useParams().id;
   const [group, setGroup] = React.useState(groupData.find(x => String(x.id) === grpId));
   
+  React.useEffect(() => {
+    // fetch all posts from database
+    fetch(api.GET_GROUP_ALL_POSTS_API(grpId))
+      .then((response) => response.json())
+      .then((data) => {
+        setAllPosts([...data.posts].reverse());
+        setPosts([...data.posts].reverse());
+      });
+  }, []);
+
+
   const handleTypeChange = (event) => {
     let temp = allPosts;
     if (sort !== "View All") {
