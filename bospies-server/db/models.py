@@ -136,7 +136,8 @@ class Group(db.Model):
             body=f"Welcome to {self.name}! This is the first post in this group.", 
             program="Bospies", 
             types="Welcome", 
-            group=self
+            group=self,
+            in_group_id=1
         )
         db.session.add(group_post)
         db.session.commit()
@@ -146,8 +147,14 @@ class Group(db.Model):
         db.session.add(group_post)
         db.session.commit()
 
+    def get_posts_count(self):
+        return len(self.posts)
+
     def get_all_posts(self):
         return GroupPost.query.filter_by(group=self).all()
+    
+    def get_post_by_id(self, post_id):
+        return GroupPost.query.filter_by(group=self, in_group_id=post_id).first()
 
 class GroupPost(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -155,6 +162,7 @@ class GroupPost(db.Model):
     post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
     author_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     
+    in_group_id = db.Column(db.Integer, nullable=False)
     title = db.Column(db.String(100), nullable=False)
     username = db.Column(db.String(50), nullable=False)
     body = db.Column(db.Text, nullable=False)

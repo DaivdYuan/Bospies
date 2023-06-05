@@ -8,7 +8,7 @@ import Comment from "../components/Comment";
 import homepagePosts from "../json/homepage_posts.json";
 import groupPosts from "../json/group_posts.json";
 
-import { GET_POST_API, SUBMIT_COMMENT_API } from "../api";
+import { GET_POST_API, SUBMIT_COMMENT_API, GET_GROUP_POST_API } from "../api";
 
 const PostBox = styled(Box)({
   padding: "32px",
@@ -20,6 +20,7 @@ const PostBox = styled(Box)({
 const PostLayout = (props) => {
   const { isGrp = false, groupName } = props;
   const postId = useParams().id;
+  const groupId = useParams().grpid;
   const [post, setPost] = React.useState(null);
   const [comments, setComments] = React.useState(post?.comments);
   const [newComment, setNewComment] = React.useState("");
@@ -48,7 +49,7 @@ const PostLayout = (props) => {
 
   };
 
-  
+  /*
   React.useEffect(() => {
     let cur = isGrp
       ? groupPosts.find((x) => String(x.id) === postId)
@@ -57,10 +58,22 @@ const PostLayout = (props) => {
     setPost(cur);
     setComments(cur.comments);
   });
-  
+  */
 
   React.useEffect(() => {
-    if (isGrp || post) return;
+    if (post) return;
+
+    if (isGrp) {
+      fetch(GET_GROUP_POST_API(groupId) + postId)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data.post);
+          setPost(data.post);
+          setComments(data.post.comments);
+        });
+      return;
+    }
+
     // fetch from api
     fetch(GET_POST_API + postId)
       .then((res) => res.json())

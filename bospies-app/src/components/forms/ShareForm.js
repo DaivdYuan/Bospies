@@ -72,7 +72,7 @@ function getStyles(name, promptName, theme) {
   };
 }
 
-export default function ShareForm() {
+export default function ShareForm(grpid = null) {
     const theme = useTheme();
     const [promptName, setPrompt] = React.useState([]);
 

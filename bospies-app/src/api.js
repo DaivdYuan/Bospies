@@ -7,3 +7,4 @@ export const SUBMIT_COMMENT_API = BASE_URL + "/upload/comment";
 export const GET_ALL_GROUPS_API = BASE_URL + "/groups";
 export const SUBMIT_NEW_GROUP_API = BASE_URL + "/upload/new-group";
 export const GET_GROUP_ALL_POSTS_API = (id) => BASE_URL + "/group/" + id + "/posts";
+export const GET_GROUP_POST_API = (id) => BASE_URL + "/group/" + id + "/post/";

@@ -51,14 +51,25 @@ def get_group(group_id):
     posts = group.get_all_posts()
     post_list = []
     for post in posts:
-        post_dict = post_to_dict(post)
+        post_dict = post_to_dict(post, type="group_post")
         post_list.append(post_dict)
 
-    return jsonify(posts=post_list)
+    group_dict = {
+        "id": group.id,
+        "name": group.name,
+        "description": group.name,
+        "numUsers": 1,
+        "usernames": ["admin"]
+    }
 
-@app.route("/gtoup/<int:group_id>/post/<int:post_id>")
+    return jsonify(posts=post_list, group=group_dict)
+
+@app.route("/group/<int:group_id>/post/<int:post_id>")
 def get_group_post(group_id, post_id):
-    pass
+    group = Group.get_group_by_id(group_id)
+    post = group.get_post_by_id(post_id)
+    post_dict = post_to_dict(post, type="group_post")
+    return jsonify(post=post_dict)
 
 @app.route("/upload/post", methods=["POST"])
 def upload_posts():

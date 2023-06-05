@@ -1,8 +1,8 @@
 from db.models import Post, GroupPost
 
-def post_to_dict(post):
+def post_to_dict(post, type="post"):
     return {
-        "id": post.id,
+        "id": post.id if type == "post" else post.in_group_id,
         "title": post.title,
         "username": post.username,
         "body": post.body,

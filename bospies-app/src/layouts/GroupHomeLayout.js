@@ -17,8 +17,8 @@ const GroupHomeLayout = () => {
   const [type, setType] = React.useState("View All");
   const [sort, setSort] = React.useState("View All");
   const grpId = useParams().id;
-  const [group, setGroup] = React.useState(groupData.find(x => String(x.id) === grpId));
-  
+  const [group, setGroup] = React.useState(null);
+
   React.useEffect(() => {
     // fetch all posts from database
     fetch(api.GET_GROUP_ALL_POSTS_API(grpId))
@@ -26,9 +26,9 @@ const GroupHomeLayout = () => {
       .then((data) => {
         setAllPosts([...data.posts].reverse());
         setPosts([...data.posts].reverse());
+        setGroup(data.group);
       });
   }, []);
-
 
   const handleTypeChange = (event) => {
     let temp = allPosts;
@@ -52,9 +52,9 @@ const GroupHomeLayout = () => {
 
   return (
     <>
-    <NavBar title={group.name} post="true" type="group"/>
-    <div style={{ height: "32px" }} />
-    <Container maxWidth="lg">
+      <NavBar title={group ? group.name : "Loading"} post="true" type="group" />
+      <div style={{ height: "32px" }} />
+      <Container maxWidth="lg">
         <Grid container>
           <Grid item xs={12} md={9}>
             <Grid
@@ -91,7 +91,14 @@ const GroupHomeLayout = () => {
             <div style={{ height: "32px" }} />
             {posts && posts.length > 0 ? (
               posts.map((post, index) => {
-                return <Post post={post} isHomepage={true} key={post.id} isGroup={grpId} />;
+                return (
+                  <Post
+                    post={post}
+                    isHomepage={true}
+                    key={post.id}
+                    isGroup={grpId}
+                  />
+                );
               })
             ) : (
               <Typography
@@ -109,36 +116,39 @@ const GroupHomeLayout = () => {
             )}
           </Grid>
           <Grid item xs={0} md={3}>
-            <GroupSideBar group={group} />
+            {group && <GroupSideBar group={group} />}
           </Grid>
         </Grid>
       </Container>
     </>
-  )
-}
+  );
+};
 
 const groupData = [
   {
     id: "1",
     name: "BOSP Kyoto Fall '22",
-    description: "This group is for all participants of the BOSP Kyoto program in Fall 2022.",
+    description:
+      "This group is for all participants of the BOSP Kyoto program in Fall 2022.",
     numUsers: "5",
-    usernames: ["Alex", "Kim", "Takashi", "John", "Hana"]
+    usernames: ["Alex", "Kim", "Takashi", "John", "Hana"],
   },
   {
     id: "2",
     name: "BOSP Ambassadors",
-    description: "Welcome! This is a hub for all student ambassadors of all BOSP programs.",
+    description:
+      "Welcome! This is a hub for all student ambassadors of all BOSP programs.",
     numUsers: "4",
-    usernames: ["Melody", "Axel", "Elliot", "Rosie"]
+    usernames: ["Melody", "Axel", "Elliot", "Rosie"],
   },
   {
     id: "3",
     name: "Doshisha Fall '22",
-    description: "This is a group that includes both Stanford and Doshisha students in Kyoto Fall '22.",
+    description:
+      "This is a group that includes both Stanford and Doshisha students in Kyoto Fall '22.",
     numUsers: "6",
-    usernames: ["Isla", "Nancy", "Gerald", "Takashi", ]
-  }
-]
+    usernames: ["Isla", "Nancy", "Gerald", "Takashi"],
+  },
+];
 
 export default GroupHomeLayout;

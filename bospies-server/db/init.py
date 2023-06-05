@@ -39,7 +39,7 @@ def add_dummy_posts(db, json_file, admin):
                 db.session.commit()
 
             for comment in post['comments']:
-                cur_post.add_comment(comment['username'], comment['body'], comment['date'], comment['time'])
+                cur_post.add_comment(comment['username'], comment['date'], comment['time'], comment['body'])
                 db.session.commit()
                  
     
@@ -61,9 +61,11 @@ def add_dummy_group_post(db, json_file, group):
         for post in posts:
             cur_post = post_from_dict(post, type='group_post')
             cur_post.group = group
+            cur_post.in_group_id = group.get_posts_count() + 1
+
             db.session.add(cur_post)
             db.session.commit()
 
             for comment in post['comments']:
-                cur_post.add_comment(comment['username'], comment['body'], comment['date'], comment['time'])
+                cur_post.add_comment(comment['username'], comment['date'], comment['time'], comment['body'])
                 db.session.commit()
