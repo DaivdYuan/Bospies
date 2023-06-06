@@ -1,5 +1,5 @@
 import { Container } from "@mui/system";
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography, Button, ButtonBase } from "@mui/material";
 import * as React from "react";
 import FilterButton from "../components/FilterButton";
 import Post from "../components/Post";
@@ -17,6 +17,22 @@ const HomepageLayout = (props) => {
   const [program, setProgram] = React.useState("View All");
   const [type, setType] = React.useState("View All");
   const [sort, setSort] = React.useState("View All");
+
+  let buttonStyle = {
+    // padding: "5px 20px",
+    // color: "black",
+    // marginLeft: "auto"
+    backgroundColor: "#ECECEC",
+    width: "100%",
+    height: "60px",
+    borderRadius: 4,
+    marginBottom: "32px",
+    justifyContent: "left",
+    paddingLeft: "32px",
+    paddingRight: "32px",
+    paddingTop: "8px",
+    alignItems: "center"
+  };
 
   React.useEffect(() => {
     // fetch all posts from database
@@ -72,11 +88,60 @@ const HomepageLayout = (props) => {
 
   return (
     <div>
-      <NavBar title="Home" post="true" type="home"/>
+      <NavBar title="Home" post="true" type="home" />
       <div style={{ height: "32px" }} />
       <Container maxWidth="lg">
         <Grid container>
           <Grid item xs={12} md={9}>
+            <Grid item xs={12} fullWidth justifyContent="flex-start">
+              <Typography
+              variant="h4"
+              align="left"
+              sx={{
+                fontSize: "20px",
+                color: "#33363F",
+                fontWeight: 700,
+                marginBottom: "16px",
+                paddingLeft: "32px"
+              }}>
+                Have a study-abroad question or experience you want to share? 
+              </Typography>
+              <a href="/createPost">
+                <ButtonBase style={buttonStyle}>
+                  <Grid container justifyContent="space-between" alignItems="center">
+                    <Grid item>
+                      <Typography
+                        variant="h4"
+                        align="left"
+                        sx={{
+                          fontSize: "20px",
+                          color: "#33363F",
+                          fontWeight: 700,
+                          marginBottom: "8px",
+                        }}
+                      >
+                        Create a post..
+                      </Typography>
+                    </Grid>
+                    <Grid item>
+                    <Typography
+                        variant="h4"
+                        align="left"
+                        sx={{
+                          fontSize: "28px",
+                          color: "#33363F",
+                          fontWeight: 500,
+                          marginBottom: "8px",
+                        }}
+                      >
+                        +
+                      </Typography>
+                    </Grid>
+                  </Grid>
+
+                </ButtonBase>
+              </a>
+            </Grid>
             <Grid
               container
               direction="row"

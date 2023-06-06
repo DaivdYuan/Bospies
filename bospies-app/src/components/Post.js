@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Box, Typography, Grid, Stack, ButtonBase, Link } from "@mui/material";
+import { Box, Typography, Grid, Stack, ButtonBase, Link, TextField } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import AddIcon from "@mui/icons-material/Add";
@@ -171,6 +171,19 @@ const Post = (props) => {
               </Grid>
             </Grid>
           )}
+          <Link href={"/post/" + post.id}>
+            <Grid container sx={{ mt: 2, mb: 2 }} direction="column">
+              {/* <Typography textAlign="left" sx={{ color: "#545563" }}>
+              Add a comment...
+            </Typography> */}
+              <TextField
+                fontSize="small"
+                multiline
+                sx={{ backgroundColor: "white" }}
+                label="Add a comment..."
+              />
+            </Grid>
+          </Link>
           <Grid container justifyContent="space-between" sx={{ marginTop: "12px" }}>
             <Grid item>
               <ButtonBase onClick={() => setShowReport(!showReport)}>
@@ -217,7 +230,7 @@ const Post = (props) => {
               })}
             </Grid>
           }
-          <Grid container sx={{mt: 2}}>
+          <Grid container sx={{ mt: 2 }}>
             <ButtonBase onClick={() => setShowReport(!showReport)}>
               <Typography
                 sx={{ fontSize: "12px", color: "#ABABAB", fontWeight: "bold", marginTop: "4px", textTransform: "uppercase" }}
