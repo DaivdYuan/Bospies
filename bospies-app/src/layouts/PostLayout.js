@@ -24,11 +24,12 @@ const PostLayout = (props) => {
   const [post, setPost] = React.useState(null);
   const [comments, setComments] = React.useState(post?.comments);
   const [newComment, setNewComment] = React.useState("");
+  const [newCommentUser, setNewCommentUser] = React.useState("");
 
   const handleNewComment = () => {
     let newPost = post;
     let comment = {
-      username: "testingstudent",
+      username: newCommentUser.length > 0 ? newCommentUser : "Anonymous",
       date: new Date(Date.now()).toLocaleString().split(",")[0],
       time: new Date(Date.now()).toLocaleString().split(",")[1],
       body: newComment,
@@ -120,6 +121,14 @@ const PostLayout = (props) => {
                 </Typography>
                 <TextField
                   fontSize="small"
+                  sx={{ backgroundColor: "white", width: "200px", mb: 2}}
+                  label="Username"
+                  value={newCommentUser}
+                  onChange={(e) => setNewCommentUser(e.target.value)}
+                />
+                <TextField
+                  fontSize="small"
+                  label="Write your comment here..."
                   multiline
                   sx={{ backgroundColor: "white" }}
                   value={newComment}

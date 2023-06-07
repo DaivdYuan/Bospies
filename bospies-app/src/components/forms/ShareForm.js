@@ -79,6 +79,7 @@ export default function ShareForm(grpid = null) {
     const postTitleRef = React.useRef();
     const postBodyRef = React.useRef();
     const postProgramRef = React.useRef();
+    const postUserRef = React.useRef();
 
     const handleChange = (event) => {
         const {
@@ -94,13 +95,13 @@ export default function ShareForm(grpid = null) {
         let postTitle = postTitleRef.current.value;
         let postBody = postBodyRef.current.value;
         let postProgram = postProgramRef.current.value;
-        let postUser = "TestUser"
+        let postUser = postUserRef.current.value;
 
         let post = {
             title: postTitle,
             body: postBody,
             program: postProgram,
-            username: postUser,
+            username: postUser ? postUser : "Anonymous",
             type: "Sharing"
         }
 
@@ -145,7 +146,11 @@ export default function ShareForm(grpid = null) {
                     style={{width: "95%", margin: "auto", marginTop: "30px"}} 
                     inputRef={postTitleRef}
                 />
-
+                <TextField 
+                    id="standard-basic" label="Username" variant="standard" 
+                    style={{width: "95%", margin: "auto", marginTop: "8px"}} 
+                    inputRef={postUserRef}  
+                />
                 <div style={{width: "95%", margin: "auto", marginTop: "20px"}} >
                     <Typography sx={{ fontSize: "15px", color: "#33363F", fontWeight: 400 }} align="left">
                         Fun fact about yourself related to study abroad!
