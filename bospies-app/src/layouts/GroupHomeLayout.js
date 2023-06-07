@@ -1,4 +1,4 @@
-import { Grid, Typography, Container } from "@mui/material";
+import { Grid, Typography, Container, ButtonBase } from "@mui/material";
 import * as React from "react";
 import FilterButton from "../components/FilterButton";
 import Post from "../components/Post";
@@ -10,6 +10,22 @@ import groupPosts from "../json/group_posts.json";
 import { useParams } from "react-router-dom";
 import GroupSideBar from "../components/GroupSideBar";
 import * as api from "../api";
+
+let buttonStyle = {
+  // padding: "5px 20px",
+  // color: "black",
+  // marginLeft: "auto"
+  backgroundColor: "#ECECEC",
+  width: "100%",
+  height: "60px",
+  borderRadius: 4,
+  marginBottom: "32px",
+  justifyContent: "left",
+  paddingLeft: "32px",
+  paddingRight: "32px",
+  paddingTop: "8px",
+  alignItems: "center"
+};
 
 const GroupHomeLayout = () => {
   const [allPosts, setAllPosts] = React.useState([]);
@@ -57,6 +73,43 @@ const GroupHomeLayout = () => {
       <Container maxWidth="lg">
         <Grid container>
           <Grid item xs={12} md={9}>
+          <Grid item xs={12} fullWidth justifyContent="flex-start">
+              <a href="/createGroupPost">
+                <ButtonBase style={buttonStyle}>
+                  <Grid container justifyContent="space-between" alignItems="center">
+                    <Grid item>
+                      <Typography
+                        variant="h4"
+                        align="left"
+                        sx={{
+                          fontSize: "20px",
+                          color: "#33363F",
+                          fontWeight: 700,
+                          marginBottom: "8px",
+                        }}
+                      >
+                        Post to this group..
+                      </Typography>
+                    </Grid>
+                    <Grid item>
+                    <Typography
+                        variant="h4"
+                        align="left"
+                        sx={{
+                          fontSize: "28px",
+                          color: "#33363F",
+                          fontWeight: 500,
+                          marginBottom: "8px",
+                        }}
+                      >
+                        +
+                      </Typography>
+                    </Grid>
+                  </Grid>
+
+                </ButtonBase>
+              </a>
+            </Grid>
             <Grid
               container
               direction="row"
